@@ -1,0 +1,19 @@
+#!/bin/sh
+
+MAJOR=$((1 + $RANDOM % 10))
+MINOR=$((1 + $RANDOM % 100))
+PATCH=$((1 + $RANDOM % 100))
+
+VERSION="release-v"$MAJOR"."$MINOR"."$PATCH
+
+# git tag "release-v"
+
+echo "Version: "$VERSION
+
+git tag $VERSION
+
+./git_tags.sh
+
+git push && git push --tags
+
+exit 0
